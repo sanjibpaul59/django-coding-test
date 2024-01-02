@@ -1,0 +1,11 @@
+Django
+django-dotenv
+django-environ
+django-extensions
+django-mysql
+djangorestframework
+mysqlclient
+pytz
+sqlparse
+requests
+

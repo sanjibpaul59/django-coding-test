@@ -1,0 +1,47 @@
+version: '3.9'
+
+services:
+  frontend:
+    build: .
+    volumes:
+      - .:/frontend
+    ports:
+      - '8080:8080'
+    networks:
+      - djangoVue
+    depends_on:
+      - backend
+
+  backend:
+    build:
+      context: ./src
+    volumes:
+      - ./src:/backend/src
+    ports:
+      - '5000:5000'
+    depends_on:
+      - db
+    networks:
+      - djangoVue
+
+  db:
+    image: mysql:8
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: StrongPassword@101
+      MYSQL_DATABASE: mediuswaredb
+      MYSQL_USER: admin
+      MYSQL_PASSWORD: StrongPassword@001
+    ports:
+      - '3308:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - djangoVue
+
+volumes:
+  mysql_data:
+
+networks:
+  djangoVue:
+    driver: bridge
