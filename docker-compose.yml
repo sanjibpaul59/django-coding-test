@@ -5,6 +5,7 @@ services:
     build: .
     volumes:
       - .:/frontend
+      - /frontend/node_modules
     ports:
       - '8080:8080'
     networks:
@@ -27,11 +28,12 @@ services:
   db:
     image: mysql:8
     restart: always
-    environment:
-      MYSQL_ROOT_PASSWORD: StrongPassword@101
-      MYSQL_DATABASE: mediuswaredb
-      MYSQL_USER: admin
-      MYSQL_PASSWORD: StrongPassword@001
+    env_file: ./src/.env
+    # environment:
+    #   MYSQL_ROOT_PASSWORD: StrongPassword@101
+    #   MYSQL_DATABASE: mediuswaredb
+    #   MYSQL_USER: admin
+    #   MYSQL_PASSWORD: StrongPassword@001
     ports:
       - '3308:3306'
     volumes:

@@ -88,7 +88,7 @@ DATABASES = {
         "NAME": env("MYSQL_DATABASE"),
         "USER": env("MYSQL_USER"),
         "PASSWORD": env("MYSQL_PASSWORD"),
-        "HOST": "db",
+        "HOST": env("MYSQL_HOST"),
         'PORT': env('MYSQL_PORT'),
         "OPTIONS": {
             "charset": "utf8mb4",  # to avoid unicode warning for database
