@@ -8,10 +8,10 @@ services:
       - /frontend/node_modules
     ports:
       - '8080:8080'
-    networks:
-      - djangoVue
     depends_on:
       - backend
+    networks:
+      - djangoVue
 
   backend:
     build:
@@ -29,8 +29,8 @@ services:
     image: mysql:8
     restart: always
     env_file: ./src/.env
-    # environment:
-    #   MYSQL_ROOT_PASSWORD: StrongPassword@101
+    environment:
+      MYSQL_ROOT_PASSWORD: StrongPassword@101
     #   MYSQL_DATABASE: mediuswaredb
     #   MYSQL_USER: admin
     #   MYSQL_PASSWORD: StrongPassword@001
